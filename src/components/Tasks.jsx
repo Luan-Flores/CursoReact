@@ -14,7 +14,7 @@ function Tasks({ tasks, onTaskClick, onTrashClick, onSeeDetailsClick }) {
 		navigate(`/task?${query.toString()}`);
 	}
 	return (
-		<ul className="space-y-4 p-6 bg-slate-200 rounded-md shadow">
+		<ul className="space-y-4 p-6 bg-slate-200 rounded-md shadow min-h-[200px] max-h-[480px] overflow-y-auto">
 			{tasks.map((task) => (
 				<li key={task.id} className="flex gap-2">
 					<BtnHashTask task={task} onClick={() => onTaskClick(task.id)}>

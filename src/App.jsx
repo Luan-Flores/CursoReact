@@ -84,7 +84,7 @@ function App() {
 
 	return (
 		// Container principal da aplicação
-		<div className="w-full h-full bg-slate-500 flex justify-center p-6">
+		<div className="w-full min-h-screen bg-slate-500 flex justify-center p-6">
 			{/* Área central onde o conteúdo (as tarefas) será exibido */}
 			<div className="w-[500px] space-y-4">
 				{/* Título principal do app */}
