@@ -1,4 +1,4 @@
-import { ChevronRightIcon, TrashIcon } from "lucide-react"; //biblioteca de icons
+import { CheckIcon, ChevronRightIcon, TrashIcon } from "lucide-react"; //biblioteca de icons
 import App from "../App";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
@@ -18,8 +18,8 @@ function Tasks({ tasks, onTaskClick, onTrashClick, onSeeDetailsClick }) {
 			{tasks.map((task) => (
 				<li key={task.id} className="flex gap-2">
 					<BtnHashTask task={task} onClick={() => onTaskClick(task.id)}>
+						{task.isCompleted ? <CheckIcon /> : null}
 						{task.title} {/* Exibe o título da task */}
-						{/* {task.isCompleted ? "COMPLETE" : "INCOMPLETE"} Apenas um teste de alteração de State */}
 					</BtnHashTask>
 					<Button onClick={() => onSeeDatailsClick(task)}>
 						<ChevronRightIcon />

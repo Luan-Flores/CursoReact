@@ -15,7 +15,26 @@ function App() {
 	// Cada tarefa tem: id, título, descrição e um booleano indicando se foi concluída
 	// Está pegando do localStorage, e setando na onAddTaskSubmit
 	const [tasks, setTasks] = useState(
-		JSON.parse(localStorage.getItem("tasks")) || []
+		JSON.parse(localStorage.getItem("tasks")) || [
+			{
+				id: 1,
+				title: "Estudar React",
+				description: "Aprender como usar useState e useEffect",
+				isCompleted: false,
+			},
+			{
+				id: 2,
+				title: "Estudar PHP",
+				description: "Aprender como buildar uma API",
+				isCompleted: false,
+			},
+			{
+				id: 3,
+				title: "Beber água",
+				description: "Sobreviver",
+				isCompleted: false,
+			},
+		]
 	);
 
 	useEffect(() => {
@@ -27,23 +46,23 @@ function App() {
 	// sempre que o [tasks, algo, algo] for alterado, executa a funcao (1 arg)
 	//------------------------------
 	//-
-	useEffect(() => {
-		const fetchTasks = async () => {
-			//CHAMAR A API, (pode usar axious, fetch, etc...)
-			const response = await fetch(
-				"https://jsonplaceholder.typicode.com/todos?_limit=10",
-				{
-					method: "GET",
-				}
-			);
-			//PEGAR OS DADOS QUE ELA RETORNA
-			const data = await response.json();
-			console.log(data);
-			//ARMAZENAR/PERSISTIR ESSES DADOS NO STATE
-			setTasks(data);
-		};
-		fetchTasks();
-	}, []);
+	// useEffect(() => {
+	// 	const fetchTasks = async () => {
+	// 		//CHAMAR A API, (pode usar axious, fetch, etc...)
+	// 		const response = await fetch(
+	// 			"https://jsonplaceholder.typicode.com/todos?_limit=10",
+	// 			{
+	// 				method: "GET",
+	// 			}
+	// 		);
+	// 		//PEGAR OS DADOS QUE ELA RETORNA
+	// 		const data = await response.json();
+	// 		console.log(data);
+	// 		//ARMAZENAR/PERSISTIR ESSES DADOS NO STATE
+	// 		setTasks(data);
+	// 	};
+	// 	fetchTasks();
+	// }, []);
 
 	// Função chamada quando uma tarefa é clicada
 	// Ela alterna o valor de isCompleted (de true para false ou vice-versa)
@@ -96,6 +115,7 @@ function App() {
 				{/* Passamos as tarefas e funções como props: */}
 				{/* - onTaskClick: para marcar como concluída ou não */}
 				{/* - onTrashClick: para excluir a tarefa */}
+
 				<AddTask onAddTaskSubmit={onAddTaskSubmit} />
 				<Tasks
 					tasks={tasks}
